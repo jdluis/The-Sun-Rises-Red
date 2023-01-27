@@ -8,8 +8,32 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    
-
+    <div class="view-container">
+        <h1>The Sun Rises Red</h1>
+        <div id="startGameView">
+            <button id="startGame">Start Game</button>
+        </div>
+        <div class="canvas-container">
+            <div class="bar-game">
+                <div class="score">
+                    <p>Score: <span>0</span></p>
+                </div>
+                <div>
+                    <p>Horda: <span>0/8</span></p>
+                </div>
+            </div>
+            <canvas id="canvas" width="800" height="600"></canvas>
+        </div>
+        <div id="winView">
+            <h2>You Win!</h2>
+            <!-- <button>Share your victory!</button> -->
+            <button id="playAgain">Play Again</button>
+        </div>
+        <div id="gameOverView">
+            <h2>Game Over.</h2>
+            <button id="restartGame">Restart</button>
+        </div>
+    </div>
     <script src="./app/main.js"></script>
 </body>
 </html>
