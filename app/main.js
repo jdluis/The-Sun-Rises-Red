@@ -14,13 +14,27 @@ const gameOverView = document.getElementById('startGameView');
 const startGameBtn = document.getElementById('startGame');
 const restartGame = document.getElementById('restartGame');
 const playAgain = document.getElementById('playAgain');
+
+//Game
+let game;
 /* | | | |  -->> ªªª Main Functions ªªª <<-- | | | | */
+
+const startGame = () => {
+    //ViewLogic
+    startGameView.style.display = 'none';
+    gameView.style.display = 'flex';
+
+    //Create Game
+    game = new Game();
+
+    //Game Start
+    game.gameLoop()
+}
 
 
 
 /* | | | |  -->> ªªª Event Listeners ªªª <<-- | | | | */
 
 startGameBtn.addEventListener('click', () => {
-    startGameView.style.display = 'none';
-    gameView.style.display = 'flex';
+    startGame();
 });
