@@ -1,26 +1,49 @@
 class Enemys {
-    constructor () {
-        this.x = 600;
-        this.y = 230;
-        this.w = 200;
-        this.h = 120;
-        this.isAlive = true;
-        this.img = new Image();
-        this.img.src = '../assets/img/Orc/2_ORK/ORK_02_IDLE_000.png';
-        this.strength = 1;
-        this.health = 3;
-        this.velocity = 1;
+  constructor() {
+    this.x = 600;
+    this.y = floorY;
+    this.w = 150;
+    this.h = 100;
+    this.isAlive = true;
+    this.img = new Image();
+    this.img.src = "../assets/img/Orc/2_ORK/ORK_02_IDLE_000.png";
+    this.strength = 1;
+    this.health = 3;
+    this.agility = 1; //.4 default
+    this.attackSpeed = 120;
+    this.isAtacking = false;
+    this.isMoving = false;
+    this.randomX = randomNumber(20);
+  }
+
+  draw = () => {
+    ctx.drawImage(
+      this.img,
+      this.x + this.randomX,
+      this.y,
+      this.w,
+      this.h
+    );
+  };
+
+  attackWarrior = (enemy, frames) => {
+    if (
+      this.isAtacking === true &&
+      this.isMoving === false &&
+      frames % this.attackSpeed === 0
+    ) {
+      enemy.health = enemy.health - this.strength;
     }
 
-    draw(x, y) {
-        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+    if (enemy.health <= 0) {
+      this.isAtacking = false;
+      this.isMoving = true;
     }
+  };
 
-    attack (enemy) {
-        enemy.health -= this.strength;
+  moveToAtack = () => {
+    if (this.isAtacking === false && this.isMoving === true) {
+      this.x = this.x - this.agility;
     }
-
-    moveToAtack () {
-        this.x = this.x - this.velocity;
-    }
+  };
 }

@@ -1,53 +1,166 @@
+@font-face {
+  font-family: "Aboreto";
+  src: url("../assets/fonts/Aboreto/Aboreto-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Explora";
+  src: url("../assets/fonts/Explora/Explora-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
 html {
-    font-size: 14px;
-    height: 100%;
+  font-size: 14px;
+  height: 100%;
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-image: url('../assets/img/bg/bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  font-family: "Explora", "Aboreto", monospace;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url("../assets/img/bg/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
+/*--GENERAL--*/
+
+button {
+    font-family: "Aboreto", "Explora", monospace;
+}
+.dividerH {
+  height: 200px;
+  width: 3px;
+  transform: rotate(170deg);
+  background-color: rgb(218, 123, 29);
+  margin: 2em;
+}
+
+h1 {
+  font-family: "Aboreto", "Explora", monospace;
+  font-size: 5rem;
+  color: rgb(236, 88, 8);
+}
+
+h2 {
+  font-size: 5rem;
+  color: antiquewhite;
+}
+
+/*--VISTAS--*/
 
 .view-container {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+/*--Start View--*/
 #startGameView {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(207, 76, 76);
+  border-radius: 10px;
+  padding-bottom: 1em;
+  opacity: 0.8;
+  padding: 2em;
 }
 
+.choose-player-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 2em 0 2em 0;
+}
+
+.heroe-male {
+  width: 200px;
+  object-fit: contain;
+}
+
+.heroe-male:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
+.heroe-female {
+  width: 170px;
+  object-fit: contain;
+  opacity: 0.5; /*provisional, not working Selection heroe*/
+}
+
+/* .heroe-female:hover {
+    scale: 1.2;
+    cursor: pointer;
+} */
+
+#startGame {
+  border: none;
+  padding: 2rem 3rem;
+  background: #e7e5e4;
+  color: black;
+  text-transform: uppercase;
+  border-radius: 10px;
+  letter-spacing: 0.15em;
+  text-shadow: 1px -1px 0 #767676;
+}
+
+#startGame:hover {
+  cursor: pointer;
+  scale: 1.2;
+  color: green;
+}
+
+/* CANVAS */
 .canvas-container {
-    display: none;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: rgb(64, 130, 62);
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgb(64, 130, 62);
 }
 
 .bar-game {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
+/*--Win View--*/
 #winView {
-    display: none; /*default*/
+  display: none; /*default*/
 }
 
+/*--Game Over View--*/
 #gameOverView {
-    display: none; /*default*/
+  display: none; /*default*/
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#restartGame {
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+}
+
+#restartGame:hover {
+    opacity: .7;
+    scale: 1.2;
+    cursor: pointer;
 }
