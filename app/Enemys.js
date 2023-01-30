@@ -1,6 +1,6 @@
 class Enemys {
   constructor() {
-    this.x = 600;
+    this.x = randomNumber(100) + 900;
     this.y = floorY;
     this.w = 60;
     this.h = 80;
@@ -13,13 +13,12 @@ class Enemys {
     this.attackSpeed = 120;
     this.isAtacking = false;
     this.isMoving = false;
-    this.randomX = randomNumber(20);
   }
 
   draw = () => {
     ctx.drawImage(
       this.img,
-      this.x + this.randomX,
+      this.x,
       this.y,
       this.w,
       this.h

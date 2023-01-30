@@ -39,7 +39,6 @@ const startGame = () => {
 
     //Create Game
     game = new Game();
-
     //Game Start
     game.gameLoop()
 }

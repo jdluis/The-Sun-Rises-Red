@@ -29,6 +29,14 @@ class Heroe {
     );
   };
 
+  moveUp = () => {
+    this.y--;
+  }
+
+  moveDown = () => {
+    this.y++;
+  }
+
   animateAtack = () => {};
  
   fireArrow = (arrow, objetive) => {
