@@ -6,7 +6,7 @@ class Game {
     this.structure = new Structure();
     this.warriors = [];
     this.horde = [];
-    this.arrow = new Arrow(this.heroe.x, this.heroe.y);
+    this.arrow = new Arrow(this.heroe);
     this.gameStatus = true; //game on or off, //Para la recursion
     this.hordeLvl = false;
     this.gameRoundStatus = true; //false: gameOver || true: win
@@ -52,7 +52,7 @@ class Game {
     }
   }; */
 
-  cleanDeadSoldiers = () => {
+  cleanDead = () => {
     /*     if (this.warriors.length <= 2 && this.hordeLvl === true) {
       this.warriors.forEach((warrior) => {
         if (warrior.health <= 0) {
@@ -61,7 +61,7 @@ class Game {
       });
     } */
 
-    if (this.horde.length <= 2 && this.hordeLvl === true) {
+    if (this.horde.length <= 2) {
       this.horde.forEach((orc) => {
         if (orc.health <= 0) {
           this.horde.shift(orc);
@@ -110,7 +110,7 @@ class Game {
 
     this.collisionLogic.collisionHeroe(this.gameOver);
     this.collisionLogic.collisionArrow();
-    this.cleanDeadSoldiers();
+    this.cleanDead();
 
     //3º Draw elements
     this.drawBackground();

@@ -1,12 +1,13 @@
 class Arrow {
-  constructor(heroeX, heroeY) {
-    this.x = heroeX;
-    this.y = heroeY;
+  constructor(heroe) {
+    this.heroe = heroe;
+    this.x = heroe.x;
+    this.y = heroe.y;
     this.w = 30;
     this.h = 10;
     this.img = new Image();
     this.img.src = "../assets/img/Arrow/Arrow.png";
-    this.speed = 1;
+    this.speed = 6;
     this.damage = 1;
     this.isShot = false;
   }
@@ -16,15 +17,18 @@ class Arrow {
   };
 
   fly = () => {
-    this.x++;
-  }
+    this.x = this.x + this.speed;
+  };
 
   renderArrow = () => {
     if (this.isShot === true) {
-        this.draw();
-        this.fly();
+      this.draw();
+      this.fly();
     }
-  }
+  };
 
-
+  reShot = () => {
+    this.isShot = false;
+    this.x = this.heroe.x;
+  };
 }

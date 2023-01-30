@@ -33,9 +33,9 @@ class Collisions {
         console.log("diana");
         this.heroe.fireArrow(this.arrow, orc);
         this.arrow.x = orc.x -30;
-        this.arrow.isShot = false;
-        this.arrow.x = this.heroe.x
+        this.arrow.reShot();
       } else {
+
       }
     });
   };
