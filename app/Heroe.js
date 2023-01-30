@@ -30,9 +30,9 @@ class Heroe {
   };
 
   animateAtack = () => {};
-
-  fireArrow = () => {
-    
+ 
+  fireArrow = (arrow, objetive) => {
+    objetive.health = objetive.health - arrow.damage;
   };
 
   hurtAnimation = () => {};

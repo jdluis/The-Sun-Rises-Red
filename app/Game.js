@@ -6,50 +6,18 @@ class Game {
     this.structure = new Structure();
     this.warriors = [];
     this.horde = [];
-    this.gameStatus = true; //game on or off
+    this.arrow = new Arrow(this.heroe.x, this.heroe.y);
+    this.gameStatus = true; //game on or off, //Para la recursion
     this.hordeLvl = false;
-    this.gameRoundStatus = false; //false: gameOver || true: win
+    this.gameRoundStatus = true; //false: gameOver || true: win
     this.score = 0;
     this.frames = 1; //frames of game, when gameLoop init
+    this.collisionLogic = new Collisions(
+      this.horde,
+      this.heroe,
+      this.arrow
+    );
   }
-
-  collisionsPlataform = () => {
-    this.horde.forEach((orc) => {
-      if (
-        orc.x < this.structure.x + this.structure.w / 2 &&
-        orc.x + orc.w > this.structure.x &&
-        orc.y < this.structure.y + this.structure.h &&
-        orc.h + orc.y > this.structure.y
-      ) {
-        orc.isMoving = false;
-        orc.isAtacking = true;
-        this.gameOver();
-      } else {
-        orc.isAtacking = false;
-        orc.isMoving = true;
-      }
-    });
-  };
-
-/*   collisionsDefenders = () => {
-    this.horde.forEach((orc) => {
-      this.warriors.forEach((warrior) => {
-        if (
-          orc.x < warrior.x + warrior.w / 2 &&
-          orc.x + orc.w > warrior.x &&
-          orc.y < warrior.y + warrior.h &&
-          orc.h + orc.y > warrior.y
-        ) {
-          orc.isMoving = false;
-          orc.isAtacking = true;
-          orc.attackWarrior(warrior, this.frames);
-        } else {
-          orc.isAtacking = false;
-          orc.isMoving = true;
-        }
-      });
-    });
-  }; */
 
   drawBackground = () => {
     ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height);
@@ -71,7 +39,7 @@ class Game {
     }
   };
 
-/*   generateDefenders = () => {
+  /*   generateDefenders = () => {
     let spawned = 2;
     if (this.warriors.length <= spawned - 1 && this.hordeLvl === false) {
       this.warriors.push(new Warrior());
@@ -85,7 +53,7 @@ class Game {
   }; */
 
   cleanDeadSoldiers = () => {
-/*     if (this.warriors.length <= 2 && this.hordeLvl === true) {
+    /*     if (this.warriors.length <= 2 && this.hordeLvl === true) {
       this.warriors.forEach((warrior) => {
         if (warrior.health <= 0) {
           this.warriors.shift(warrior);
@@ -102,6 +70,10 @@ class Game {
     }
   };
 
+  cleanArrows = (index) => {
+    this.arrows.shift(this.arrows[index]);
+  };
+
   newRound = () => {
     if (this.gameRoundStatus === true) this.hordeLvl = true;
     if (this.gameRoundStatus === false) {
@@ -110,10 +82,11 @@ class Game {
   };
 
   gameOver = () => {
-    this.gameRoundStatus = false;
-    this.gameStatus = false;
-    gameView.style.display = 'none';
-    gameOverView.style.display = 'flex';
+    if (this.gameStatus === true) {
+      gameView.style.display = "none";
+      gameOverView.style.display = "flex";
+    } 
+    this.gameStatus = false; //Para la recursion
   };
 
   roundWin = () => {
@@ -134,17 +107,17 @@ class Game {
     this.horde.forEach((enemy) => {
       enemy.moveToAtack();
     });
+    this.arrow.fly();
 
-    this.collisionsPlataform();
-   /*  this.collisionsDefenders(); */
+    this.collisionLogic.collisionHeroe(this.gameOver);
+    this.collisionLogic.collisionArrow();
     this.cleanDeadSoldiers();
 
     //3º Draw elements
     this.drawBackground();
-    /* this.structure.draw(); */
     this.heroe.animate(this.frames);
-    /* this.generateDefenders(); */
     this.createHorde(1);
+    this.arrow.draw();
 
     //4º Recursion and Control of recursion.
     if (this.gameStatus === true) {

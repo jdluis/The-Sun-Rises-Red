@@ -2,11 +2,11 @@ class Enemys {
   constructor() {
     this.x = 600;
     this.y = floorY;
-    this.w = 150;
-    this.h = 100;
+    this.w = 60;
+    this.h = 80;
     this.isAlive = true;
     this.img = new Image();
-    this.img.src = "../assets/img/Orc/2_ORK/ORK_02_IDLE_000.png";
+    this.img.src = "../assets/img/Orc/orc.png";
     this.strength = 1;
     this.health = 3;
     this.agility = 1; //.4 default
