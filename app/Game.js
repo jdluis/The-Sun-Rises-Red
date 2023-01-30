@@ -107,7 +107,6 @@ class Game {
     this.horde.forEach((enemy) => {
       enemy.moveToAtack();
     });
-    this.arrow.fly();
 
     this.collisionLogic.collisionHeroe(this.gameOver);
     this.collisionLogic.collisionArrow();
@@ -117,7 +116,7 @@ class Game {
     this.drawBackground();
     this.heroe.animate(this.frames);
     this.createHorde(1);
-    this.arrow.draw();
+    this.arrow.renderArrow()
 
     //4º Recursion and Control of recursion.
     if (this.gameStatus === true) {

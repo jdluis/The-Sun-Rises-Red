@@ -8,6 +8,7 @@ class Arrow {
     this.img.src = "../assets/img/Arrow/Arrow.png";
     this.speed = 1;
     this.damage = 1;
+    this.isShot = false;
   }
 
   draw = () => {
@@ -19,8 +20,10 @@ class Arrow {
   }
 
   renderArrow = () => {
-    this.arrow.draw();
-    this.arrow.fly();
+    if (this.isShot === true) {
+        this.draw();
+        this.fly();
+    }
   }
 
 

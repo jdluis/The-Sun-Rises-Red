@@ -68,6 +68,6 @@ restartGameBtn.addEventListener('click', restartGame);
 window.addEventListener('keydown', (e) => {
     let code = e.code;
     if (code === 'Space') {
-        game.ThrowArrow = true;
+        game.arrow.isShot = true;
     }
 })
