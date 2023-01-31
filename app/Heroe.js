@@ -39,9 +39,21 @@ class Heroe {
 
   animateAtack = () => {};
  
-  fireArrow = (arrow, objetive) => {
+  shootDamage = (arrow, objetive) => {
     objetive.health = objetive.health - arrow.damage;
   };
+
+  shoot = () => {
+    if (alreadyShoot === false) {
+         const wait = setInterval(() => {
+          alreadyShoot = false;
+             game.createArrows()
+              clearInterval(wait)
+         }, 500)
+      
+      alreadyShoot = true;
+  }
+  }
 
   hurtAnimation = () => {};
 

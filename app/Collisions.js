@@ -24,7 +24,7 @@ class Collisions {
 
   collisionArrow = () => {
     this.arrows.forEach(arrow => {
-        this.horde.forEach((orc) => {
+        this.horde.forEach((orc, index) => {
           if (
             arrow.x < orc.x + orc.w / 2 &&
             arrow.x + arrow .w > orc.x &&
@@ -32,7 +32,9 @@ class Collisions {
             arrow.h + arrow .y > orc.y
           ) {
             console.log("diana");
-            this.heroe.fireArrow(arrow, orc);
+
+            //aqui esta el problema de que me dañe a mas de e que quiero
+            this.heroe.shootDamage(arrow, this.horde[index]);
             arrow.x = orc.x -30;
             this.arrows.shift(arrow);
           } else {

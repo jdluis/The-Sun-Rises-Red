@@ -22,6 +22,7 @@ const hordeLvLSpan = document.getElementById('hordeLvLSpan');
 //Game
 let game;
 const floorY = 200;
+let alreadyShoot = false;
 
 //Images | Sprites
 const heroeSprites = {
@@ -68,12 +69,17 @@ startGameBtn.addEventListener('click', () => {
 restartGameBtn.addEventListener('click', restartGame);
 
 
+window.addEventListener('keyup', (e) => {
+    let code = e.code;
+    if (code === 'Space' && alreadyShoot === false) {
+        alreadyShoot = false;
+        game.heroe.shoot()
+    }
+})
+
+
 window.addEventListener('keypress', (e) => {
     let code = e.code;
-    if (code === 'Space') {
-        game.createArrows()
-    }
-
     if (code === 'KeyW' ) {
         game.heroe.moveUp();
     }

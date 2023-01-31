@@ -28,12 +28,22 @@ class Game {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
-  createHorde = () => {
-    if (this.horde.length <= this.spawn - 1 && this.roundStatus === true) {
+  createHorde = () => { //problema con renderizado o con cleanHorde
+    if (this.frames % 120 === 0 &&this.horde.length <= this.spawn - 1 && this.roundStatus === true) {
       this.horde.push(new Enemys());
     }
   };
 
+  
+  renderHorde = () => {
+    console.log(this.horde.length ,  this.spawn )
+    if (this.horde.length <= this.spawn && this.roundStatus === true) {
+      for (let i = 0; i < this.horde.length; i++) {
+        this.horde[i].draw();
+      }
+    }
+  };
+  
   createArrows = () => {
     if (this.arrows.length >= 0 && this.roundStatus === true) {
       this.arrows.push(new Arrow(this.heroe));
@@ -42,15 +52,6 @@ class Game {
       arrow.isShot = true;
     });
   };
-
-  renderHorde = () => {
-    if (this.horde.length === this.spawn && this.roundStatus === true) {
-      for (let i = 0; i < this.horde.length; i++) {
-        this.horde[i].draw();
-      }
-    }
-  };
-
   /* newRound = () => { //Deberia controlar cada ronda
     if ( this.killed.length === this.spawn) { 
       console.log("fdsf")
@@ -81,12 +82,14 @@ class Game {
     } */
 
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
-      this.horde.forEach((orc) => {
+      this.horde.forEach((orc, index) => {
         if (orc.health <= 0) {
           this.killed++;
           console.log(this.killed);
-          this.spawn++;
-          this.horde.shift(orc);
+          if (this.spawn < 20)  {
+            this.spawn++;
+          }
+          this.horde.splice(index, 1);
         }
       });
     }
@@ -135,6 +138,7 @@ class Game {
 
     this.collisionLogic.collisionHeroe(this.gameOver);
     this.collisionLogic.collisionArrow();
+  /*   this.collisionLogic.collisionArrowToOrc(); */
     this.cleanDead();
     this.cleanArrows();
     /*  this.newRound(); */
