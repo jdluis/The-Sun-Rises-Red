@@ -8,7 +8,7 @@ class Heroe {
 
     //Img
     this.img = new Image();
-    this.img.src = heroeSprites.iddle; //w: 1744 px | h: 1000 px
+    this.img.src = heroeSprites.sprite; //w: 1744 px | h: 1000 px
 
     //Skills
     this.lifes = 3;

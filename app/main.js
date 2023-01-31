@@ -15,6 +15,8 @@ const startGameBtn = document.getElementById("startGame");
 const restartGameBtn = document.getElementById("restartGame");
 const playAgainBtn = document.getElementById("playAgain");
 const pauseBtn = document.getElementById("pause");
+const maleHeroBtn = document.getElementById("selectMale");
+const femaleHeroBtn = document.getElementById("selectFemale");
 
 //DOM- Bar Game uses
 const scoreSpan = document.getElementById("scoreSpan");
@@ -22,6 +24,10 @@ const hordeLvLSpan = document.getElementById("hordeLvLSpan");
 const fianlScoreSpan = document.getElementById("fianlScoreSpan");
 const finalLvLSpan = document.getElementById("finalLvLSpan");
 const lifesLeftsDOM = document.getElementById("lifeSpan");
+
+//DOM-Style
+const imgFemaleDOM = document.querySelector(".heroe-female");
+const imgMaleDOM = document.querySelector(".heroe-male");
 
 //Game
 let game;
@@ -32,12 +38,23 @@ const bottomLimit = 360;
 
 //Images | Sprites
 const heroeSprites = {
-  iddle: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
+  sprite: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
   sW: 429, //width de sprite / columnas de dibujos
   sH: 500, //height de sprite / rows
   sX: 1, //en la imagen
   sY: 1, //en la imagen
   sttaggedFrames: 10,
+};
+
+const chooseHero = {
+  male: {
+    /* simple: , */
+    iddle: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
+  },
+  female: {
+    simple: "./assets/img/heroe-female/elf.png",
+    /* iddle: , */
+  },
 };
 
 /* | | | |  -->> ªªª Main Functions ªªª <<-- | | | | */
@@ -68,12 +85,34 @@ const randomNumber = (posibility) => {
 
 /* | | | |  -->> ªªª Event Listeners ªªª <<-- | | | | */
 
+//Game settings
 startGameBtn.addEventListener("click", () => {
   startGame();
 });
 
 restartGameBtn.addEventListener("click", restartGame);
 
+//Choose Hero****
+
+maleHeroBtn.addEventListener("click", () => {
+  heroeSprites.sprite = chooseHero.male.iddle;
+  imgMaleDOM.style.opacity = "1";
+  maleHeroBtn.classList.add("activeHero");
+
+  imgFemaleDOM.style.opacity = ".8";
+  femaleHeroBtn.classList.remove("activeHero");
+});
+
+femaleHeroBtn.addEventListener("click", () => {
+  heroeSprites.sprite = chooseHero.female.simple;
+  imgFemaleDOM.style.opacity = "1";
+  femaleHeroBtn.classList.add("activeHero");
+
+  imgMaleDOM.style.opacity = ".8";
+  maleHeroBtn.classList.remove("activeHero");
+});
+
+// Movement and Actions
 window.addEventListener("keyup", (e) => {
   let code = e.code;
   if (code === "Space" && alreadyShoot === false) {
@@ -93,7 +132,7 @@ window.addEventListener("keypress", (e) => {
   }
 });
 
-/* Visual Functions DOM */
+// Pause Icon toggle & Pause init
 pauseBtn.addEventListener("click", () => {
   game.gamePause();
   if (pauseBtn.innerHTML === '<i class="fa-solid fa-circle-pause"></i>') {
