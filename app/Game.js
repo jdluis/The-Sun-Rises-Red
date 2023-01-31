@@ -73,7 +73,9 @@ class Game {
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
       this.horde.forEach((orc, index) => {
         if (orc.health <= 0 || orc.x < 0) {
-          this.killed++;
+          if (orc.health <= 0) {
+            this.killed++;
+          }
           if (this.spawn < 20) {
             this.spawn++;
           }

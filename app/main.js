@@ -27,6 +27,8 @@ const lifesLeftsDOM = document.getElementById("lifeSpan");
 let game;
 const floorY = 200;
 let alreadyShoot = false;
+const topLimit = 130;
+const bottomLimit = 360;
 
 //Images | Sprites
 const heroeSprites = {

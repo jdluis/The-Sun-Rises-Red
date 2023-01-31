@@ -44,11 +44,15 @@ class Heroe {
 
   //actions
   moveUp = () => {
-    this.y = this.y - this.playerSpeed;
+    if (this.y > topLimit) {
+      this.y = this.y - this.playerSpeed;
+    }
   };
 
   moveDown = () => {
+    if (this.y < bottomLimit) {
     this.y = this.y + this.playerSpeed;
+    }
   };
 
   shootDamage = (arrow, objetive) => {
