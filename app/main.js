@@ -20,6 +20,7 @@ const scoreSpan = document.getElementById("scoreSpan");
 const hordeLvLSpan = document.getElementById("hordeLvLSpan");
 const fianlScoreSpan = document.getElementById("fianlScoreSpan");
 const finalLvLSpan = document.getElementById("finalLvLSpan");
+const lifesLeftsDOM = document.getElementById('lifeSpan');
 
 //Game
 let game;

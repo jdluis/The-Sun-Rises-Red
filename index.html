@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Archer game with hordes">
-    <meta name="author" content="jdluis.com">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Archer game with hordes" />
+    <meta name="author" content="jdluis.com" />
     <title>The Sun Rises Red</title>
-    <link rel="stylesheet" href="./styles/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/3ffbeed2f4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <div class="view-container">
-        <h1>The Sun Rises Red</h1>
-        <div id="startGameView">
-            <h2>Choose Your Heroe</h2>
-            <div class="choose-player-container">
-                <img class="heroe-male" src="./assets/img/heroe/Elf.png" alt="heroe-elf-male">
-                <div class="dividerH"></div>
-                <img class="heroe-female" src="./assets/img/heroe-female/elf.png"  alt="heroe-elf-female">
-            </div>
-            <div>
-                <button id="startGame">Start Game</button>
-            </div>
+      <h1>The Sun Rises Red</h1>
+      <div id="startGameView">
+        <h2>Choose Your Heroe</h2>
+        <div class="choose-player-container">
+          <img
+            class="heroe-male"
+            src="./assets/img/heroe/Elf.png"
+            alt="heroe-elf-male"
+          />
+          <div class="dividerH"></div>
+          <img
+            class="heroe-female"
+            src="./assets/img/heroe-female/elf.png"
+            alt="heroe-elf-female"
+          />
         </div>
-        <div class="canvas-container">
-            <div class="bar-game">
-                <div class="score">
-                    <p>Score: <span id="scoreSpan">0</span></p>
-                </div>
-                <div class="horde">
-                    <p>LvL: <span id="hordeLvLSpan">0</span></p>
-                </div>
-            </div>
-            <canvas id="canvas" width="800" height="500"></canvas>
+        <div>
+          <button id="startGame">Start Game</button>
         </div>
-        <div id="winView">
-            <h2>You Win!</h2>
-            <!-- <button>Share your victory!</button> -->
-            <button id="playAgain">Play Again</button>
+      </div>
+      <div class="canvas-container">
+        <div class="bar-game">
+          <div class="score">
+            <p>Score: <span id="scoreSpan">0</span></p>
+          </div>
+          <div class="lifes">
+            <p>Lifes: <span id="lifeSpan">-</span></p>
+          </div>
+          <div class="horde">
+            <p>LvL: <span id="hordeLvLSpan">0</span></p>
+          </div>
         </div>
-        <div id="gameOverView">
-            <h2>Game Over.</h2>
-            <div class="bar-game">
-                <div class="score">
-                    <p>Your Score was: <span id="fianlScoreSpan">0</span></p>
-                </div>
-                <div class="horde">
-                    <p>Your Hight LvL: <span id="finalLvLSpan">0</span></p>
-                </div>
-            </div>
-            <div>
-                <span class="lineHoriz"></span>
-                <button id="restartGame">Try again</button>
-                <span class="lineHoriz"></span>
-            </div>
+        <canvas id="canvas" width="800" height="500"></canvas>
+      </div>
+      <div id="winView">
+        <h2>You Win!</h2>
+        <!-- <button>Share your victory!</button> -->
+        <button id="playAgain">Play Again</button>
+      </div>
+      <div id="gameOverView">
+        <h2>Game Over.</h2>
+        <div class="bar-game">
+          <div class="score">
+            <p>Your Score was: <span id="fianlScoreSpan">0</span></p>
+          </div>
+          <div class="horde">
+            <p>Your Hight LvL: <span id="finalLvLSpan">0</span></p>
+          </div>
         </div>
+        <div>
+          <span class="lineHoriz"></span>
+          <button id="restartGame">Try again</button>
+          <span class="lineHoriz"></span>
+        </div>
+      </div>
     </div>
 
     <!-- JS -->
@@ -66,5 +81,5 @@
     <script src="./app/Structure.js"></script>
     <script src="./app/Enemys.js"></script>
     <script src="./app/Arrow.js"></script>
-</body>
+  </body>
 </html>

@@ -31,8 +31,14 @@ body {
 
 /* ----ººº GENERAL ººº---- */
 
+.fa-heart {
+  font-size: 20px;
+  padding: 0 2px;
+  color: red;
+}
+
 button {
-    font-family: "Aboreto", "Explora", monospace;
+  font-family: "Aboreto", "Explora", monospace;
 }
 .dividerH {
   height: 200px;
@@ -155,7 +161,6 @@ h2 {
   margin: 0;
 }
 
-
 /* Win View */
 #winView {
   display: none;
@@ -172,8 +177,7 @@ h2 {
   gap: 1em;
 }
 
-
-#gameOverView h2{
+#gameOverView h2 {
   padding: 0;
   margin: 10px;
 }
@@ -197,7 +201,7 @@ h2 {
 }
 
 #restartGame:hover {
-    opacity: .7;
-    scale: 1.2;
-    cursor: pointer;
+  opacity: 0.7;
+  scale: 1.2;
+  cursor: pointer;
 }

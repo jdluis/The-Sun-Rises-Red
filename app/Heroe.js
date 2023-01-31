@@ -55,6 +55,11 @@ class Heroe {
     objetive.health = objetive.health - arrow.damage;
   };
 
+  lostLife = () => {
+    this.lifes = this.lifes - 1;
+    console.log(this.lifes);
+  };
+
   shoot = () => {
     if (alreadyShoot === false) {
       const wait = setInterval(() => {

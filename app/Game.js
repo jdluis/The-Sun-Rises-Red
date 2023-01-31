@@ -3,12 +3,11 @@ class Game {
     this.bg = new Image();
     this.bg.src = "../assets/img/bg/battle1.png";
 
-    
     //Arrays
     this.arrows = [];
     this.warriors = [];
     this.horde = [];
-    
+
     // Obj Creation
     this.heroe = new Heroe();
     this.collisionLogic = new Collisions(this.horde, this.heroe, this.arrows);
@@ -19,7 +18,7 @@ class Game {
     this.gameStatus = true; //game on or off, //Para la recursion
     this.gameRoundStatus = true; //false: gameOver || true: win
 
-    //Counters 
+    //Counters
     this.spawn = 1;
     this.killed = 0;
     this.hordeLvl = 0;
@@ -59,7 +58,7 @@ class Game {
       }
     }
   };
-  
+
   createArrows = () => {
     if (this.arrows.length >= 0 && this.roundStatus === true) {
       this.arrows.push(new Arrow(this.heroe));
@@ -69,12 +68,11 @@ class Game {
     });
   };
 
-
   //Clean Methods
   cleanDead = () => {
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
       this.horde.forEach((orc, index) => {
-        if (orc.health <= 0) {
+        if (orc.health <= 0 || orc.x < 0) {
           this.killed++;
           if (this.spawn < 20) {
             this.spawn++;
@@ -113,6 +111,15 @@ class Game {
     finalLvLSpan.innerText = this.hordeLvl;
   };
 
+  updateLifesLefts = () => {
+    lifesLeftsDOM.innerHTML =
+      this.heroe.lifes === 3
+        ? `<i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>`
+        : this.heroe.lifes === 2
+        ? `<i class="fa-solid fa-heart"><i class="fa-solid fa-heart"></i>`
+        : `<i class="fa-solid fa-heart"></i>`;
+  };
+
   //Main Method
   gameLoop = () => {
     this.frames++;
@@ -132,6 +139,7 @@ class Game {
 
     this.updateScore();
     this.updateLvL();
+    this.updateLifesLefts();
 
     this.cleanDead();
     this.cleanArrows();

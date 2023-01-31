@@ -26,7 +26,10 @@ class Collisions {
   collisionOutOfMap = (gameOver) => {
     this.horde.forEach((orc) => {
       if (orc.x <= 0) {
-        gameOver();
+        this.heroe.lostLife();
+        if (this.heroe.lifes <= 0) {
+          gameOver();
+        }
       } else {
       }
     });
