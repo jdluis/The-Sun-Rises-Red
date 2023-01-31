@@ -42,6 +42,12 @@ button {
   margin: 2em;
 }
 
+.lineHoriz {
+  width: 30px;
+  height: 1px;
+  background-color: #767676;
+}
+
 h1 {
   font-family: "Aboreto", "Explora", monospace;
   font-size: 5rem;
@@ -160,16 +166,34 @@ h2 {
 #gameOverView {
   display: none;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-align: center;
+  gap: 1em;
+}
+
+
+#gameOverView h2{
+  padding: 0;
+  margin: 10px;
+}
+
+#gameOverView .bar-game {
+  gap: 3rem;
+  background-color: #6662626a;
+  padding: 2rem;
+  color: #ffffff;
+  border-radius: 100px 50px;
 }
 
 #restartGame {
+  margin-top: 2em;
   background-color: transparent;
   border: none;
   color: whitesmoke;
   font-size: 1.5rem;
   letter-spacing: 0.15em;
+  background-color: inherit;
 }
 
 #restartGame:hover {

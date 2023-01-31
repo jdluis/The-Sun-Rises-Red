@@ -16,8 +16,8 @@ const restartGameBtn = document.getElementById("restartGame");
 const playAgainBtn = document.getElementById("playAgain");
 
 //DOM- Bar Game uses
-const scoreSpan = document.getElementById("scoreSpan");
-const hordeLvLSpan = document.getElementById("hordeLvLSpan");
+const scoreSpan = document.querySelector(".scoreSpan");
+const hordeLvLSpan = document.querySelector(".hordeLvLSpan");
 
 //Game
 let game;
