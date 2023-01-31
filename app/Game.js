@@ -104,11 +104,13 @@ class Game {
 
   updateScore = () => {
     scoreSpan.innerText = this.killed;
+    fianlScoreSpan.innerText = this.killed;
   };
 
   updateLvL = () => {
     //PENDIENTE
     hordeLvLSpan.innerText = this.hordeLvl;
+    finalLvLSpan.innerText = this.hordeLvl;
   };
 
   //Main Method
