@@ -23,25 +23,33 @@ class Collisions {
     });
   };
 
-  collisionArrow = () => {
-    this.arrows.forEach(arrow => {
-        this.horde.forEach((orc, index) => {
-          if (
-            arrow.x < orc.x + orc.w / 2 &&
-            arrow.x + arrow .w > orc.x &&
-            arrow.y < orc.y + orc.h &&
-            arrow.h + arrow .y > orc.y
-          ) {
+  collisionOutOfMap = (gameOver) => {
+    this.horde.forEach((orc) => {
+      if (orc.x <= 0) {
+        gameOver();
+      } else {
+      }
+    });
+  };
 
-            this.heroe.shootDamage(arrow, this.horde[index]);
-            arrow.x = orc.x -30;
-            this.arrows.shift(arrow);
-          } else {
-            if (arrow.x > canvas.width) {
-                //logica para quitar flechas
-            }
+  collisionArrow = () => {
+    this.arrows.forEach((arrow) => {
+      this.horde.forEach((orc, index) => {
+        if (
+          arrow.x < orc.x + orc.w / 2 &&
+          arrow.x + arrow.w > orc.x &&
+          arrow.y < orc.y + orc.h &&
+          arrow.h + arrow.y > orc.y
+        ) {
+          this.heroe.shootDamage(arrow, this.horde[index]);
+          arrow.x = orc.x - 30;
+          this.arrows.shift(arrow);
+        } else {
+          if (arrow.x > canvas.width) {
+            //logica para quitar flechas
           }
-        });
-    })
+        }
+      });
+    });
   };
 }
