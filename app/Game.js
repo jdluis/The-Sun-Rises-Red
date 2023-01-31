@@ -100,6 +100,11 @@ class Game {
     this.gameStatus = false; //Stop recursion
   };
 
+  gamePause = () => {
+    this.gameStatus = !this.gameStatus;
+    this.gameLoop();
+  }
+
   updateScore = () => {
     scoreSpan.innerText = this.killed;
     fianlScoreSpan.innerText = this.killed;

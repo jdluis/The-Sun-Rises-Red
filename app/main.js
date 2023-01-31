@@ -7,20 +7,21 @@ const ctx = canvas.getContext("2d");
 //Views
 const startGameView = document.getElementById("startGameView");
 const gameView = document.querySelector(".canvas-container");
-const winView = document.getElementById("startGameView");
+const pauseView = document.getElementById("pauseView");
 const gameOverView = document.getElementById("gameOverView");
 
 //Buttons
 const startGameBtn = document.getElementById("startGame");
 const restartGameBtn = document.getElementById("restartGame");
 const playAgainBtn = document.getElementById("playAgain");
+const pauseBtn = document.getElementById("pause");
 
 //DOM- Bar Game uses
 const scoreSpan = document.getElementById("scoreSpan");
 const hordeLvLSpan = document.getElementById("hordeLvLSpan");
 const fianlScoreSpan = document.getElementById("fianlScoreSpan");
 const finalLvLSpan = document.getElementById("finalLvLSpan");
-const lifesLeftsDOM = document.getElementById('lifeSpan');
+const lifesLeftsDOM = document.getElementById("lifeSpan");
 
 //Game
 let game;
@@ -87,5 +88,16 @@ window.addEventListener("keypress", (e) => {
 
   if (code === "KeyS") {
     game.heroe.moveDown();
+  }
+});
+
+/* Visual Functions DOM */
+pauseBtn.addEventListener("click", () => {
+  game.gamePause();
+  if (pauseBtn.innerHTML === '<i class="fa-solid fa-circle-pause"></i>') {
+    pauseBtn.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
+  } else {
+    pauseBtn.innerHTML = '<i class="fa-solid fa-circle-pause"></i>';
+    game.gameStatus = true;
   }
 });

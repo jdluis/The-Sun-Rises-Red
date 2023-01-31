@@ -49,9 +49,13 @@ button {
 }
 
 .lineHoriz {
-  width: 30px;
-  height: 1px;
-  background-color: #767676;
+  display: block;
+  width: 100px;
+  margin: 0 20px;
+  height: 2px;
+  background-color: #c9880f;
+  border-radius: 10px;
+  border: 1px solid black;
 }
 
 h1 {
@@ -160,9 +164,32 @@ h2 {
   padding: 0;
   margin: 0;
 }
+.pauseBtn-container {
+  position: relative;
+  top: 45px;
+  left: 370px;
+  height: 0;
+}
+
+#pause {
+  font-size: 1.5em;
+  border: none;
+  border-radius: 0 0 10px 0;
+  cursor: pointer;
+  padding: 8px 4px 0 4px;
+  background-color: rgb(64, 130, 62);
+}
+
+.fa-circle-play {
+  color: #fefefe;
+}
+
+.fa-circle-pause {
+  color: #ffffff;
+}
 
 /* Win View */
-#winView {
+#pauseView {
   display: none;
 }
 
@@ -190,8 +217,15 @@ h2 {
   border-radius: 100px 50px;
 }
 
-#restartGame {
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 2em;
+}
+
+#restartGame {
   background-color: transparent;
   border: none;
   color: whitesmoke;

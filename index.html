@@ -16,6 +16,8 @@
   <body>
     <div class="view-container">
       <h1>The Sun Rises Red</h1>
+
+      <!-- Start View -->
       <div id="startGameView">
         <h2>Choose Your Heroe</h2>
         <div class="choose-player-container">
@@ -35,7 +37,12 @@
           <button id="startGame">Start Game</button>
         </div>
       </div>
+
+      <!-- Game View -->
       <div class="canvas-container">
+        <div class="pauseBtn-container">
+          <button id="pause"><i class="fa-solid fa-circle-pause"></i></button>
+        </div>
         <div class="bar-game">
           <div class="score">
             <p>Score: <span id="scoreSpan">0</span></p>
@@ -49,11 +56,14 @@
         </div>
         <canvas id="canvas" width="800" height="500"></canvas>
       </div>
-      <div id="winView">
+
+      <!-- Pause View -->
+      <div id="pauseView">
         <h2>You Win!</h2>
-        <!-- <button>Share your victory!</button> -->
         <button id="playAgain">Play Again</button>
       </div>
+
+      <!-- GameOver View -->
       <div id="gameOverView">
         <h2>Game Over.</h2>
         <div class="bar-game">
@@ -64,7 +74,7 @@
             <p>Your Hight LvL: <span id="finalLvLSpan">0</span></p>
           </div>
         </div>
-        <div>
+        <div class="btn-container">
           <span class="lineHoriz"></span>
           <button id="restartGame">Try again</button>
           <span class="lineHoriz"></span>
