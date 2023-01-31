@@ -7,7 +7,7 @@ class Arrow {
     this.h = 10;
     this.img = new Image();
     this.img.src = "../assets/img/Arrow/Arrow.png";
-    this.speed = 6;
+    this.speed = 5;
     this.damage = 1;
     this.isShot = false;
   }
@@ -27,8 +27,4 @@ class Arrow {
     }
   };
 
-  reShot = () => {
-    this.isShot = false;
-    this.x = this.heroe.x;
-  };
 }

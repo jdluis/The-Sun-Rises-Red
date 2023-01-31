@@ -1,7 +1,7 @@
 class Enemys {
   constructor() {
-    this.x = randomNumber(100) + 900;
-    this.y = floorY;
+    this.x = randomNumber(150) + 900;
+    this.y = 300 + randomNumber(150);
     this.w = 60;
     this.h = 80;
     this.isAlive = true;
@@ -9,7 +9,7 @@ class Enemys {
     this.img.src = "../assets/img/Orc/orc.png";
     this.strength = 1;
     this.health = 3;
-    this.agility = 1; //.4 default
+    this.agility = .6; //.4 default
     this.attackSpeed = 120;
     this.isAtacking = false;
     this.isMoving = false;

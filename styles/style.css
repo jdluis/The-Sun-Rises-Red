@@ -136,7 +136,16 @@ h2 {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  font-size: 3em;
 }
+
+.bar-game p {
+  padding: 0;
+  margin: 0;
+}
+
 
 /*--Win View--*/
 #winView {

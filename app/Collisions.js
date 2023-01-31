@@ -1,8 +1,8 @@
 class Collisions {
-  constructor(horde, heroe, arrow) {
+  constructor(horde, heroe, arrows) {
     this.heroe = heroe;
     this.horde = horde;
-    this.arrow = arrow;
+    this.arrows = arrows;
   }
   collisionHeroe = (gameOver) => {
     this.horde.forEach((orc) => {
@@ -23,21 +23,25 @@ class Collisions {
   };
 
   collisionArrow = () => {
-    this.horde.forEach((orc) => {
-      if (
-        this.arrow .x < orc.x + orc.w / 2 &&
-        this.arrow .x + this.arrow .w > orc.x &&
-        this.arrow .y < orc.y + orc.h &&
-        this.arrow .h + this.arrow .y > orc.y
-      ) {
-        console.log("diana");
-        this.heroe.fireArrow(this.arrow, orc);
-        this.arrow.x = orc.x -30;
-        this.arrow.reShot();
-      } else {
-
-      }
-    });
+    this.arrows.forEach(arrow => {
+        this.horde.forEach((orc) => {
+          if (
+            arrow.x < orc.x + orc.w / 2 &&
+            arrow.x + arrow .w > orc.x &&
+            arrow.y < orc.y + orc.h &&
+            arrow.h + arrow .y > orc.y
+          ) {
+            console.log("diana");
+            this.heroe.fireArrow(arrow, orc);
+            arrow.x = orc.x -30;
+            this.arrows.shift(arrow);
+          } else {
+            if (arrow.x > canvas.width) {
+                //logica para quitar flechas
+            }
+          }
+        });
+    })
   };
 
   /*   collisionsDefenders = () => {

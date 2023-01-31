@@ -15,6 +15,10 @@ const startGameBtn = document.getElementById('startGame');
 const restartGameBtn = document.getElementById('restartGame');
 const playAgainBtn = document.getElementById('playAgain');
 
+//DOM- Bar Game uses
+const scoreSpan = document.getElementById('scoreSpan');
+const hordeLvLSpan = document.getElementById('hordeLvLSpan');
+
 //Game
 let game;
 const floorY = 200;
@@ -64,9 +68,17 @@ startGameBtn.addEventListener('click', () => {
 restartGameBtn.addEventListener('click', restartGame);
 
 
-window.addEventListener('keydown', (e) => {
+window.addEventListener('keypress', (e) => {
     let code = e.code;
     if (code === 'Space') {
-        game.arrow.isShot = true;
+        game.createArrows()
+    }
+
+    if (code === 'KeyW' ) {
+        game.heroe.moveUp();
+    }
+
+    if (code === 'KeyS' ) {
+        game.heroe.moveDown();
     }
 })

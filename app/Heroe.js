@@ -30,11 +30,11 @@ class Heroe {
   };
 
   moveUp = () => {
-    this.y--;
+    this.y = this.y - this.playerSpeed;
   }
 
   moveDown = () => {
-    this.y++;
+    this.y = this.y + this.playerSpeed;
   }
 
   animateAtack = () => {};

@@ -7,14 +7,16 @@ class Game {
     this.structure = new Structure();
     this.warriors = [];
     this.horde = [];
-    this.hordeLvl = 1;
+    this.hordeLvl = 0;
     this.roundStatus = true;
-    this.arrow = new Arrow(this.heroe);
+    this.spawn = 1;
+    this.arrows = [];
+    /* this.arrow = new Arrow(this.heroe); */
     this.gameStatus = true; //game on or off, //Para la recursion
     this.gameRoundStatus = true; //false: gameOver || true: win
     this.score = 0;
     this.frames = 1; //frames of game, when gameLoop init
-    this.collisionLogic = new Collisions(this.horde, this.heroe, this.arrow);
+    this.collisionLogic = new Collisions(this.horde, this.heroe, this.arrows);
     this.randomX = randomNumber(20);
   }
 
@@ -27,23 +29,32 @@ class Game {
   };
 
   createHorde = () => {
-    if (this.horde.length <= this.hordeLvl - 1 && this.roundStatus === true) {
+    if (this.horde.length <= this.spawn - 1 && this.roundStatus === true) {
       this.horde.push(new Enemys());
     }
   };
 
+  createArrows = () => {
+    if (this.arrows.length >= 0 && this.roundStatus === true) {
+      this.arrows.push(new Arrow(this.heroe));
+    }
+    game.arrows.forEach((arrow) => {
+      arrow.isShot = true;
+    });
+  };
+
   renderHorde = () => {
-    if (this.horde.length === this.hordeLvl && this.roundStatus === true) {
+    if (this.horde.length === this.spawn && this.roundStatus === true) {
       for (let i = 0; i < this.horde.length; i++) {
         this.horde[i].draw();
-      } 
+      }
     }
   };
 
   /* newRound = () => { //Deberia controlar cada ronda
-    if ( this.killed.length === this.hordeLvl) { 
+    if ( this.killed.length === this.spawn) { 
       console.log("fdsf")
-      this.hordeLvl++;
+      this.spawn++;
     }
   }; */
 
@@ -69,20 +80,25 @@ class Game {
       });
     } */
 
-    if (this.horde.length <= this.hordeLvl && this.roundStatus === true) {
+    if (this.horde.length <= this.spawn && this.roundStatus === true) {
       this.horde.forEach((orc) => {
         if (orc.health <= 0) {
-          this.killed++
-          console.log(this.killed)
-          this.hordeLvl++;
+          this.killed++;
+          console.log(this.killed);
+          this.spawn++;
           this.horde.shift(orc);
         }
       });
     }
   };
 
-  cleanArrows = (index) => {
-    this.arrows.shift(this.arrows[index]);
+  cleanArrows = () => {
+    this.arrows.forEach((arrow) => {
+      if (arrow.x > canvas.width) {
+        console.log("borrada la  flecha");
+        this.arrows.shift(arrow);
+      }
+    });
   };
 
   gameOver = () => {
@@ -98,7 +114,12 @@ class Game {
   };
 
   updateScore = () => {
-    this.score++;
+    scoreSpan.innerText = this.killed;
+  };
+
+  updateLvL = () => {
+    //PENDIENTE
+    hordeLvLSpan.innerText = this.hordeLvl;
   };
 
   gameLoop = () => {
@@ -115,14 +136,19 @@ class Game {
     this.collisionLogic.collisionHeroe(this.gameOver);
     this.collisionLogic.collisionArrow();
     this.cleanDead();
-   /*  this.newRound(); */
-    this.createHorde()
+    this.cleanArrows();
+    /*  this.newRound(); */
+    this.createHorde();
+    this.updateScore();
+    this.updateLvL();
 
     //3º Draw elements
     this.drawBackground();
     this.heroe.animate(this.frames);
     this.renderHorde();
-    this.arrow.renderArrow();
+    this.arrows.forEach((arrow) => {
+      arrow.renderArrow();
+    });
 
     //4º Recursion and Control of recursion.
     if (this.gameStatus === true) {
