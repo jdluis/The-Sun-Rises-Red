@@ -11,6 +11,8 @@
   font-weight: normal;
 }
 
+/* ----ººº MAIN ººº---- */
+
 html {
   font-size: 14px;
   height: 100%;
@@ -26,7 +28,8 @@ body {
   background-size: cover;
   background-position: center;
 }
-/*--GENERAL--*/
+
+/* ----ººº GENERAL ººº---- */
 
 button {
     font-family: "Aboreto", "Explora", monospace;
@@ -50,7 +53,7 @@ h2 {
   color: antiquewhite;
 }
 
-/*--VISTAS--*/
+/* ----ººº VIEWS ººº---- */
 
 .view-container {
   width: 100%;
@@ -62,7 +65,7 @@ h2 {
   flex-direction: column;
 }
 
-/*--Start View--*/
+/* Start View */
 #startGameView {
   display: flex;
   justify-content: center;
@@ -96,7 +99,7 @@ h2 {
 .heroe-female {
   width: 170px;
   object-fit: contain;
-  opacity: 0.5; /*provisional, not working Selection heroe*/
+  opacity: 0.5;
 }
 
 /* .heroe-female:hover {
@@ -147,14 +150,15 @@ h2 {
 }
 
 
-/*--Win View--*/
+/* Win View */
 #winView {
-  display: none; /*default*/
+  display: none;
 }
 
-/*--Game Over View--*/
+/* GameOver View */
+
 #gameOverView {
-  display: none; /*default*/
+  display: none;
   justify-content: center;
   flex-direction: column;
   text-align: center;

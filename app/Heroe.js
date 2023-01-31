@@ -1,17 +1,24 @@
 class Heroe {
   constructor() {
+    //Render Positions and Size
     this.x = 70;
     this.y = floorY;
     this.w = 60;
     this.h = 80;
+
+    //Img
     this.img = new Image();
     this.img.src = heroeSprites.iddle; //w: 1744 px | h: 1000 px
-    this.isAlive = true;
+
+    //Skills
     this.lifes = 3;
     this.fireRatio = 1;
     this.playerSpeed = 6;
+
+    //Actions
   }
 
+  //render
   animate = (gameFrame) => {
     let position = Math.floor(gameFrame / heroeSprites.sttaggedFrames) % 4;
     heroeSprites.sX = heroeSprites.sW * position;
@@ -29,33 +36,33 @@ class Heroe {
     );
   };
 
+  animateAtack = () => {};
+
+  hurtAnimation = () => {};
+
+  diedAnimation = () => {};
+
+  //actions
   moveUp = () => {
     this.y = this.y - this.playerSpeed;
-  }
+  };
 
   moveDown = () => {
     this.y = this.y + this.playerSpeed;
-  }
+  };
 
-  animateAtack = () => {};
- 
   shootDamage = (arrow, objetive) => {
     objetive.health = objetive.health - arrow.damage;
   };
 
   shoot = () => {
     if (alreadyShoot === false) {
-         const wait = setInterval(() => {
-          alreadyShoot = false;
-             game.createArrows()
-              clearInterval(wait)
-         }, 500)
-      
+      const wait = setInterval(() => {
+        alreadyShoot = false;
+        game.createArrows();
+        clearInterval(wait);
+      }, 500);
       alreadyShoot = true;
-  }
-  }
-
-  hurtAnimation = () => {};
-
-  diedAnimation = () => {};
+    }
+  };
 }

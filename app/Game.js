@@ -2,24 +2,37 @@ class Game {
   constructor() {
     this.bg = new Image();
     this.bg.src = "../assets/img/bg/battle1.png";
-    this.heroe = new Heroe();
-    this.killed = 0;
-    this.structure = new Structure();
+
+    
+    //Arrays
+    this.arrows = [];
     this.warriors = [];
     this.horde = [];
-    this.hordeLvl = 0;
+    
+    // Obj Creation
+    this.heroe = new Heroe();
+    this.collisionLogic = new Collisions(this.horde, this.heroe, this.arrows);
+    this.structure = new Structure();
+
+    //Logic Boolean
     this.roundStatus = true;
-    this.spawn = 1;
-    this.arrows = [];
-    /* this.arrow = new Arrow(this.heroe); */
     this.gameStatus = true; //game on or off, //Para la recursion
     this.gameRoundStatus = true; //false: gameOver || true: win
+
+    //Counters 
+    this.spawn = 1;
+    this.killed = 0;
+    this.hordeLvl = 0;
     this.score = 0;
     this.frames = 1; //frames of game, when gameLoop init
-    this.collisionLogic = new Collisions(this.horde, this.heroe, this.arrows);
+
+    //Others
     this.randomX = randomNumber(20);
   }
 
+  //  ----------- Methods --------------
+
+  // Canvas render
   drawBackground = () => {
     ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height);
   };
@@ -28,15 +41,18 @@ class Game {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
-  createHorde = () => { //problema con renderizado o con cleanHorde
-    if (this.frames % 120 === 0 &&this.horde.length <= this.spawn - 1 && this.roundStatus === true) {
+  //Creation of new Objs
+  createHorde = () => {
+    //create objs
+    if (
+      this.frames % 120 === 0 &&
+      this.horde.length <= this.spawn - 1 &&
+      this.roundStatus === true
+    ) {
       this.horde.push(new Enemys());
     }
-  };
 
-  
-  renderHorde = () => {
-    console.log(this.horde.length ,  this.spawn )
+    //render
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
       for (let i = 0; i < this.horde.length; i++) {
         this.horde[i].draw();
@@ -52,41 +68,15 @@ class Game {
       arrow.isShot = true;
     });
   };
-  /* newRound = () => { //Deberia controlar cada ronda
-    if ( this.killed.length === this.spawn) { 
-      console.log("fdsf")
-      this.spawn++;
-    }
-  }; */
 
-  /*   generateDefenders = () => {
-    let spawned = 2;
-    if (this.warriors.length <= spawned - 1 ) {
-      this.warriors.push(new Warrior());
-    }
 
-    if (this.warriors.length === spawned) {
-      this.warriors[0].draw(20, 15);
-      this.warriors[1].draw(40, 30);
-      this.warriors[1].draw(20, 45);
-    }
-  }; */
-
+  //Clean Methods
   cleanDead = () => {
-    /*     if (this.warriors.length <= 2) {
-      this.warriors.forEach((warrior) => {
-        if (warrior.health <= 0) {
-          this.warriors.shift(warrior);
-        }
-      });
-    } */
-
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
       this.horde.forEach((orc, index) => {
         if (orc.health <= 0) {
           this.killed++;
-          console.log(this.killed);
-          if (this.spawn < 20)  {
+          if (this.spawn < 20) {
             this.spawn++;
           }
           this.horde.splice(index, 1);
@@ -98,22 +88,18 @@ class Game {
   cleanArrows = () => {
     this.arrows.forEach((arrow) => {
       if (arrow.x > canvas.width) {
-        console.log("borrada la  flecha");
         this.arrows.shift(arrow);
       }
     });
   };
 
+  //Game Logic Methods
   gameOver = () => {
     if (this.gameStatus === true) {
       gameView.style.display = "none";
       gameOverView.style.display = "flex";
     }
-    this.gameStatus = false; //Para la recursion
-  };
-
-  roundWin = () => {
-    this.gameRoundStatus = true;
+    this.gameStatus = false; //Stop recursion
   };
 
   updateScore = () => {
@@ -125,6 +111,7 @@ class Game {
     hordeLvLSpan.innerText = this.hordeLvl;
   };
 
+  //Main Method
   gameLoop = () => {
     this.frames++;
 
@@ -136,20 +123,20 @@ class Game {
       enemy.moveToAtack();
     });
 
+    //collisions
     this.collisionLogic.collisionHeroe(this.gameOver);
     this.collisionLogic.collisionArrow();
-  /*   this.collisionLogic.collisionArrowToOrc(); */
-    this.cleanDead();
-    this.cleanArrows();
-    /*  this.newRound(); */
-    this.createHorde();
+
     this.updateScore();
     this.updateLvL();
+
+    this.cleanDead();
+    this.cleanArrows();
 
     //3º Draw elements
     this.drawBackground();
     this.heroe.animate(this.frames);
-    this.renderHorde();
+    this.createHorde();
     this.arrows.forEach((arrow) => {
       arrow.renderArrow();
     });
