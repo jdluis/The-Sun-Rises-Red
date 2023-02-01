@@ -25,14 +25,10 @@ class Enemys {
   //Render
   draw = () => {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-  };
-
-  renderImpactedArrows = () => { //TESTING
-    console.log(this.impactedArrows)
     this.impactedArrows.forEach(arrow => {
-      arrow.draw()
+      arrow.drawArrowsInOrc(this.x)
     })
-  }
+  };
 
   //Actions
   attackWarrior = (enemy, frames) => {

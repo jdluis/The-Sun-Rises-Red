@@ -48,7 +48,6 @@ class Collisions {
           arrow.x = orc.x - 30; //ajuste al cuerpo
           orc.impactedArrows.push(arrow); //TESTING
           arrow.cleanArrow(indexArrow);
-          orc.renderImpactedArrows(); //TESTING
         } else {
           if (arrow.x > canvas.width) {
             arrow.cleanArrow(indexArrow);

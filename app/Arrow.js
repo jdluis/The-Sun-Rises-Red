@@ -24,6 +24,10 @@ class Arrow {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   };
 
+  drawArrowsInOrc = (orcX) => {
+    ctx.drawImage(this.img, orcX, this.y, this.w, this.h);
+  }
+
   renderArrow = () => {
     if (this.isShot === true) {
       this.draw();
