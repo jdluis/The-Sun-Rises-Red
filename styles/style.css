@@ -157,8 +157,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   border: 2px solid black;
-  border-radius: 10px;
-  background-color: rgb(64, 130, 62);
+  border-radius: 10px 10px 0 0;
 }
 
 .bar-game {
@@ -168,6 +167,8 @@ h2 {
   padding: 0;
   margin: 0;
   font-size: 3em;
+  background-color: rgb(64, 130, 62); 
+  border-radius: 10px 10px 0 0;
 }
 
 .bar-game p {
