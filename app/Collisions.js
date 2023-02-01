@@ -45,13 +45,11 @@ class Collisions {
           arrow.h + arrow.y > orc.y
         ) {
           this.heroe.shootDamage(arrow, this.horde[index]);
-          arrow.x = orc.x - 30; //ajuste al cuerpo
-          orc.impactedArrows.push(arrow); //TESTING
+          arrow.x = orc.x - 30; //adjust the arrow to body
+          orc.impactedArrows.push(arrow);
           arrow.cleanArrow(indexArrow);
-        } else {
-          if (arrow.x > canvas.width) {
+        } else if (arrow.x > canvas.width) {
             arrow.cleanArrow(indexArrow);
-          }
         }
       });
     });
