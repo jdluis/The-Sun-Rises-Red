@@ -36,7 +36,7 @@ class Collisions {
   };
 
   collisionArrow = () => {
-    this.arrows.forEach((arrow) => {
+    this.arrows.forEach((arrow, indexArrow) => {
       this.horde.forEach((orc, index) => {
         console.log(
           arrow.x < orc.x + orc.w / 2,
@@ -53,10 +53,10 @@ class Collisions {
         ) {
           this.heroe.shootDamage(arrow, this.horde[index]);
           arrow.x = orc.x - 30; //ajuste al cuerpo
-          arrow.cleanArrow(arrow);
+          arrow.cleanArrow(indexArrow);
         } else {
           if (arrow.x > canvas.width) {
-            arrow.cleanArrow(arrow);
+            arrow.cleanArrow(indexArrow);
           }
         }
       });

@@ -32,7 +32,7 @@ class Arrow {
   };
 
   cleanArrow = (arrow) => {
-    game.arrows.shift(arrow);
+    game.arrows.splice(arrow, 1);
   }
 
   //Actions
