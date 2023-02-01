@@ -19,12 +19,20 @@ class Enemys {
     //Actions
     this.isAtacking = false;
     this.isMoving = false;
+    this.impactedArrows = [];
   }
 
   //Render
   draw = () => {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   };
+
+  renderImpactedArrows = () => { //TESTING
+    console.log(this.impactedArrows)
+    this.impactedArrows.forEach(arrow => {
+      arrow.draw()
+    })
+  }
 
   //Actions
   attackWarrior = (enemy, frames) => {
