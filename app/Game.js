@@ -105,10 +105,18 @@ class Game {
     fianlScoreSpan.innerText = this.killed;
   };
 
-  updateLvL = () => {
+  updateHighScore = () => {
     //PENDIENTE
-    hordeLvLSpan.innerText = this.hordeLvl;
-    finalLvLSpan.innerText = this.hordeLvl;
+    let highScore = localStorage.getItem('highScore');
+
+    if (highScore > this.killed) {
+      localStorage.setItem('highScore', highScore);
+    } else {
+      localStorage.setItem('highScore', this.killed);
+    }
+
+    finalHighScoreSpan.innerText = window.localStorage.getItem('highScore');
+
   };
 
   updateLifesLefts = () => {
@@ -138,7 +146,7 @@ class Game {
     this.collisionLogic.collisionArrow();
 
     this.updateScore();
-    this.updateLvL();
+    this.updateHighScore();
     this.updateLifesLefts();
 
     this.cleanDead();

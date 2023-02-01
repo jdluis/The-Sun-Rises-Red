@@ -20,9 +20,9 @@ const femaleHeroBtn = document.getElementById("selectFemale");
 
 //DOM- Bar Game uses
 const scoreSpan = document.getElementById("scoreSpan");
-const hordeLvLSpan = document.getElementById("hordeLvLSpan");
+const highScoreSpan = document.getElementById("highScoreSpan");
 const fianlScoreSpan = document.getElementById("fianlScoreSpan");
-const finalLvLSpan = document.getElementById("finalLvLSpan");
+const finalHighScoreSpan = document.getElementById("finalHighScoreSpan");
 const lifesLeftsDOM = document.getElementById("lifeSpan");
 
 //DOM-Style
@@ -83,6 +83,8 @@ const randomNumber = (posibility) => {
   return Math.random() * -posibility;
 };
 
+highScoreSpan.innerText = window.localStorage.getItem('highScore');
+finalHighScoreSpan.innerText = window.localStorage.getItem('highScore');
 /* | | | |  -->> ªªª Event Listeners ªªª <<-- | | | | */
 
 //Game settings
