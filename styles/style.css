@@ -210,6 +210,29 @@ h2 {
   background-color: rgb(64, 130, 62);
 }
 
+.objetiv-container{
+  position: absolute;
+  top: 60%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  height: 10%;
+  display: grid;
+  place-items: center;
+}
+
+.objetiv-container p{
+  color: #000000;
+  padding: 1.5em 1em;
+  box-sizing: border-box;
+  max-width: 800px;
+  max-width: 600px;
+  font-size: 2.4rem;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 8px;
+}
+
 .fa-circle-play {
   color: #fefefe;
 }

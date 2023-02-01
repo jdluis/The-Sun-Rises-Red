@@ -48,11 +48,15 @@
       </div>
 
       <!-- Game View -->
-      <div class="canvas-container">
+      <div class="canvas-container">        
         <div class="pauseBtn-container">
           <button id="pause"><i class="fa-solid fa-circle-pause"></i></button>
         </div>
+        <div class="objetiv-container">
+          <p>Dodge the enemies and don't let them pass.</p>
+        </div>
         <div class="bar-game">
+          
           <div class="score">
             <p>Score: <span id="scoreSpan">0</span></p>
           </div>
@@ -63,6 +67,7 @@
             <p>Last High Score: <span id="highScoreSpan">0</span></p>
           </div>
         </div>
+       
         <canvas id="canvas" width="800" height="500"></canvas>
       </div>
 

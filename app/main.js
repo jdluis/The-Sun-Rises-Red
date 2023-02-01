@@ -28,6 +28,7 @@ const lifesLeftsDOM = document.getElementById("lifeSpan");
 //DOM-Style
 const imgFemaleDOM = document.querySelector(".heroe-female");
 const imgMaleDOM = document.querySelector(".heroe-male");
+const instructionInGameDOM = document.querySelector(".objetiv-container");
 
 //Game
 let game;
@@ -64,6 +65,12 @@ const startGame = () => {
   startGameView.style.display = "none";
   gameOverView.style.display = "none";
   gameView.style.display = "flex";
+
+  if (gameView.style.display === "flex") {
+    setTimeout(() => {
+      instructionInGameDOM.style.display = "none";
+    }, 6000)
+  }
 
   //Create Game
   game = new Game();
