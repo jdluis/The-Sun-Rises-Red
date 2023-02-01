@@ -31,6 +31,10 @@ class Arrow {
     }
   };
 
+  cleanArrow = (arrow) => {
+    game.arrows.shift(arrow);
+  }
+
   //Actions
   fly = () => {
     this.x = this.x + this.speed;

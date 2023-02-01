@@ -13,7 +13,7 @@ class Enemys {
     //Skills
     this.strength = 1;
     this.health = 3;
-    this.agility = 2; //.4 default
+    this.agility = 1; //.4 default
     this.attackSpeed = 120;
 
     //Actions

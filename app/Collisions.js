@@ -38,6 +38,13 @@ class Collisions {
   collisionArrow = () => {
     this.arrows.forEach((arrow) => {
       this.horde.forEach((orc, index) => {
+        console.log(
+          arrow.x < orc.x + orc.w / 2,
+          arrow.x + arrow.w > orc.x,
+          arrow.y < orc.y + orc.h,
+          arrow.h + arrow.y > orc.y
+        );
+
         if (
           arrow.x < orc.x + orc.w / 2 &&
           arrow.x + arrow.w > orc.x &&
@@ -46,10 +53,10 @@ class Collisions {
         ) {
           this.heroe.shootDamage(arrow, this.horde[index]);
           arrow.x = orc.x - 30;
-          this.arrows.shift(arrow);
+          arrow.cleanArrow(arrow);
         } else {
           if (arrow.x > canvas.width) {
-            //logica para quitar flechas
+            arrow.cleanArrow(arrow);
           }
         }
       });

@@ -85,13 +85,6 @@ class Game {
     }
   };
 
-  cleanArrows = () => {
-    this.arrows.forEach((arrow) => {
-      if (arrow.x > canvas.width) {
-        this.arrows.shift(arrow);
-      }
-    });
-  };
 
   //Game Logic Methods
   gameOver = () => {
@@ -149,7 +142,6 @@ class Game {
     this.updateLifesLefts();
 
     this.cleanDead();
-    this.cleanArrows();
 
     //3º Draw elements
     this.drawBackground();
