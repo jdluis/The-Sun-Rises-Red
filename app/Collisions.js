@@ -52,7 +52,7 @@ class Collisions {
           arrow.h + arrow.y > orc.y
         ) {
           this.heroe.shootDamage(arrow, this.horde[index]);
-          arrow.x = orc.x - 30;
+          arrow.x = orc.x - 30; //ajuste al cuerpo
           arrow.cleanArrow(arrow);
         } else {
           if (arrow.x > canvas.width) {
