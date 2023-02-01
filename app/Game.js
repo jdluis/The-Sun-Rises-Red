@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.bg = new Image();
-    this.bg.src = "../assets/img/bg/battle1.png";
+    this.bg.src = "./assets/img/bg/battle1.png";
 
     //Arrays
     this.arrows = [];

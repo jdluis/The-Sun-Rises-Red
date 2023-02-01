@@ -9,7 +9,7 @@ class Arrow {
 
     //Img
     this.img = new Image();
-    this.img.src = "../assets/img/Arrow/Arrow.png";
+    this.img.src = "./assets/img/Arrow/Arrow.png";
 
     //Skills
     this.speed = 5;

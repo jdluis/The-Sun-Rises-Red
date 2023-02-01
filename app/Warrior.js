@@ -8,7 +8,7 @@ class Warrior {
 
     //Img
     this.img = new Image();
-    this.img.src = "../assets/img/Warriors/1_KNIGHT/Knight_01__IDLE_000.png";
+    this.img.src = "./assets/img/Warriors/1_KNIGHT/Knight_01__IDLE_000.png";
 
     //Skills
     this.strength = 1;

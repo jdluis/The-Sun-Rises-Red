@@ -8,7 +8,7 @@ class Enemys {
 
     //Img
     this.img = new Image();
-    this.img.src = "../assets/img/Orc/orc.png";
+    this.img.src = "./assets/img/Orc/orc.png";
 
     //Skills
     this.strength = 1;
