@@ -292,3 +292,28 @@ h2 {
   scale: 1.2;
   cursor: pointer;
 }
+
+
+
+/* UPGRADES */
+
+.upgrades-container {
+  position: relative;
+  top: 15%;
+  height: 0;
+  width: 100%;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.upgrades-container .item{
+  background-color: #767676;
+  padding: 20px;
+  opacity: .8;
+}
+
+.upgrades-container .item:hover{
+  cursor: pointer;
+  opacity: .7;
+}

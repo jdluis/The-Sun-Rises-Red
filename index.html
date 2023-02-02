@@ -56,16 +56,21 @@
           <p>Dodge the enemies and don't let them pass.</p>
         </div>
         <div class="bar-game">
-          
           <div class="score">
             <p>Score: <span id="scoreSpan">0</span></p>
           </div>
           <div class="lifes">
-            <p>Lifes: <span id="lifeSpan">-</span></p>
+            <p>Lifes: <span id="lifeSpan"></span></p>
           </div>
           <div class="horde">
             <p>Last High Score: <span id="highScoreSpan">0</span></p>
           </div>
+        </div>
+        <div class="upgrades-container">
+          <button id="upgradeDamage" class="item">Arrow Damage</button>
+          <button id="upgradeArrowSpeed" class="item">Arrow Speed</button>
+          <button id="addLife" class="item">Lifes++</button>
+          <button id="addAllied" class="item">Add Allied</button>
         </div>
        
         <canvas id="canvas" width="800" height="500"></canvas>
@@ -101,9 +106,8 @@
     <script src="./app/Game.js"></script>
     <script src="./app/Collisions.js"></script>
     <script src="./app/Heroe.js"></script>
-    <script src="./app/Warrior.js"></script>
-    <script src="./app/Structure.js"></script>
     <script src="./app/Enemys.js"></script>
     <script src="./app/Arrow.js"></script>
+    <!-- <script src="./app/Warrior.js"></script>-->
   </body>
 </html>

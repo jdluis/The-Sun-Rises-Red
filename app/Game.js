@@ -5,7 +5,7 @@ class Game {
 
     //Arrays
     this.arrows = [];
-    this.warriors = [];
+    //this.warriors = [];
     this.horde = [];
 
     // Obj Creation
@@ -17,6 +17,7 @@ class Game {
     this.roundStatus = true;
     this.gameStatus = true; //game on or off, //Para la recursion
     this.gameRoundStatus = true; //false: gameOver || true: win
+    this.inLevel = true;
 
     //Counters
     this.spawn = 1;
@@ -76,15 +77,11 @@ class Game {
           if (orc.health <= 0) {
             this.killed++;
           }
-          if (this.spawn < 20) {
-            this.spawn++;
-          }
           this.horde.splice(index, 1);
         }
       });
     }
   };
-
 
   //Game Logic Methods
   gameOver = () => {
@@ -98,7 +95,7 @@ class Game {
   gamePause = () => {
     this.gameStatus = !this.gameStatus;
     this.gameLoop();
-  }
+  };
 
   updateScore = () => {
     scoreSpan.innerText = this.killed;
@@ -106,39 +103,42 @@ class Game {
   };
 
   updateHighScore = () => {
-    let highScore = localStorage.getItem('highScore');
+    let highScore = localStorage.getItem("highScore");
 
     if (highScore > this.killed) {
-      localStorage.setItem('highScore', highScore);
+      localStorage.setItem("highScore", highScore);
     } else {
-      localStorage.setItem('highScore', this.killed);
+      localStorage.setItem("highScore", this.killed);
     }
 
-    finalHighScoreSpan.innerText = window.localStorage.getItem('highScore');
+    finalHighScoreSpan.innerText = window.localStorage.getItem("highScore");
   };
 
-  updateLifesLefts = () => {
-    lifesLeftsDOM.innerHTML =
-      this.heroe.lifes === 3
-        ? `<i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>`
-        : this.heroe.lifes === 2
-        ? `<i class="fa-solid fa-heart"><i class="fa-solid fa-heart"></i>`
-        : `<i class="fa-solid fa-heart"></i>`;
+  updateLifesLefts = () => { 
+    lifesLeftsDOM.innerHTML = '';
+    for (let i = lifesLeftsDOM.childElementCount; i < this.heroe.lifes;i++ ) {
+      lifesLeftsDOM.innerHTML += `<i class="fa-solid fa-heart"></i>`;
+    }
   };
-
 
   //Levels Up
 
-  levelUp = () => {
-    //vaciar arrays de horda
-    //puedo crear for y recorrer cada levelup por diez, de esa forma cada 10 muertos sube un nivel
-    if (this.killer > levels[0] * 10) {
-      this.horde.length = 0;
+  levelUp = () => { //diden't work correctly, Testing
+    for (let i = 0; levels.length > i; i++) {
+      if (this.killed === levels[i] * 5 && this.inLevel === true) {
+        this.inLevel = false;
+
+        upgradesView.style.display = "flex";
+        this.horde.length = 0;
+        this.gameStatus = false; //pauseGame
+    
+        this.spawn = this.spawn + i + 2;
+      }
+      if (this.killed === (levels[i] * 5) + 1) {
+        this.inLevel = true;
+      }
     }
-    //pausar juego hasta que elija mejora
-    //cambiar enemigos a rapido
-    //spawn de 10 mas
-  }
+  };
 
   //Main Method
   gameLoop = () => {

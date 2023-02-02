@@ -81,6 +81,10 @@ class Heroe {
     this.lifes = this.lifes - 1;
   };
 
+  winLife = () => {
+    this.lifes++;
+  }
+
   shoot = () => {
     if (alreadyShoot === false) {
       const wait = setInterval(() => {

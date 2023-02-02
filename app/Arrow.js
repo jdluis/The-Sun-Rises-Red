@@ -1,7 +1,6 @@
 class Arrow {
   constructor(heroe) {
     //Render Positions and Size
-    this.heroe = heroe;
     this.x = heroe.x;
     this.y = heroe.y + 30;
     this.w = 30;
@@ -12,8 +11,8 @@ class Arrow {
     this.img.src = "./assets/img/Arrow/Arrow.png";
 
     //Skills
-    this.speed = 5;
-    this.damage = 1;
+    this.speed = arrowsSpeed;
+    this.damage = arrowsDamage;
 
     //Actions
     this.isShot = false;
@@ -43,4 +42,14 @@ class Arrow {
   fly = () => {
     this.x = this.x + this.speed;
   };
+
+  //Skills
+
+  upgradeSpeed = () => {
+    this.speed++
+  }
+
+  upgradeDamage = () => {
+    this.damage++
+  }
 }

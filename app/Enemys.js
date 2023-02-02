@@ -25,8 +25,7 @@ class Enemys {
   //Render
 
   animate = (gameFrame, killedCount) => {
-
-    if (killedCount < 10) {
+    if (killedCount <= 10) {
       this.walkingAnimation(gameFrame);
     } else if (killedCount > 10) {
       this.runAnimation(gameFrame);
@@ -42,7 +41,7 @@ class Enemys {
     spritesImages.orc.walking.sX = spritesImages.orc.walking.sW * position;
   
     this.img.src = spritesImages.orc.walking.img;
-    this.agility = 1;
+    this.agility = 1.5;
     drawSprite(
       this.img,
       spritesImages.orc.walking.sX,
@@ -61,7 +60,7 @@ class Enemys {
     spritesImages.orc.run.sX = spritesImages.orc.run.sW * position;
   
     this.img.src = spritesImages.orc.run.img;
-    this.agility = 1.5;
+    this.agility = 2.2;
 
     drawSprite(
       this.img,

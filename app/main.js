@@ -9,6 +9,7 @@ const startGameView = document.getElementById("startGameView");
 const gameView = document.querySelector(".canvas-container");
 const pauseView = document.getElementById("pauseView");
 const gameOverView = document.getElementById("gameOverView");
+const upgradesView = document.querySelector(".upgrades-container");
 
 //Buttons
 const startGameBtn = document.getElementById("startGame");
@@ -17,6 +18,10 @@ const playAgainBtn = document.getElementById("playAgain");
 const pauseBtn = document.getElementById("pause");
 const maleHeroBtn = document.getElementById("selectMale");
 const femaleHeroBtn = document.getElementById("selectFemale");
+const upgradeDamage = document.getElementById("upgradeDamage");
+const addLife = document.getElementById("addLife");
+const addAllied = document.getElementById("addAllied");
+const upgradeArrowSpeed = document.getElementById("upgradeArrowSpeed");
 
 //DOM- Bar Game uses
 const scoreSpan = document.getElementById("scoreSpan");
@@ -33,11 +38,16 @@ const instructionInGameDOM = document.querySelector(".objetiv-container");
 //Game
 let game;
 const floorY = 200;
-let alreadyShoot = false;
 const topLimit = 130;
 const bottomLimit = 360;
-const levels = [0,1,2,3,4,5,6,7,8,9,10];
+const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+let alreadyShoot = false;
 let heroeIsFemale = false;
+
+//Game Options
+let arrowsSpeed = 5;
+let arrowsDamage = 1;
 
 //Images | Sprites
 
@@ -88,7 +98,7 @@ const spritesImages = {
       sX: 0, //en la imagen
       sY: 0, //en la imagens
       sttaggedFrames: 9,
-    }
+    },
     /*
     iddle: ,
     atacking: ,
@@ -188,6 +198,31 @@ window.addEventListener("keypress", (e) => {
   if (code === "KeyS") {
     game.heroe.moveDown();
   }
+});
+
+// Game Upgrades
+
+upgradeDamage.addEventListener("click", () => {
+  arrowsDamage++;
+  game.gamePause();
+  upgradesView.style.display = "none";
+});
+
+upgradeArrowSpeed.addEventListener("click", () => {
+  arrowsSpeed++;
+  game.gamePause();
+  upgradesView.style.display = "none";
+});
+
+addLife.addEventListener("click", () => {
+  game.heroe.winLife();
+  game.gamePause();
+  upgradesView.style.display = "none";
+});
+
+addAllied.addEventListener("click", () => {
+  game.gamePause();
+  upgradesView.style.display = "none";
 });
 
 // Pause Icon toggle & Pause init
