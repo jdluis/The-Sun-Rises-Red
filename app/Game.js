@@ -6,12 +6,11 @@ class Game {
     //Arrays
     this.arrows = [];
     //this.warriors = [];
-    this.horde = [];
+    this.horde = []; 
 
     // Obj Creation
     this.heroe = new Heroe();
     this.collisionLogic = new Collisions(this.horde, this.heroe, this.arrows);
-    this.structure = new Structure();
 
     //Logic Boolean
     this.roundStatus = true;
@@ -20,7 +19,7 @@ class Game {
     this.inLevel = true;
 
     //Counters
-    this.spawn = 1;
+    this.spawn = modifySpawnQuantity;
     this.killed = 0;
     this.hordeLvl = 0;
     this.score = 0;
@@ -125,7 +124,7 @@ class Game {
 
   levelUp = () => { //diden't work correctly, Testing
     for (let i = 0; levels.length > i; i++) {
-      if (this.killed === levels[i] * 5 && this.inLevel === true) {
+      if (this.killed === levels[i] * nextLevelProduct && this.inLevel === true) {
         this.inLevel = false;
 
         upgradesView.style.display = "flex";
@@ -134,7 +133,7 @@ class Game {
     
         this.spawn = this.spawn + i + 2;
       }
-      if (this.killed === (levels[i] * 5) + 1) {
+      if (this.killed === (levels[i] * nextLevelProduct) + 1) {
         this.inLevel = true;
       }
     }

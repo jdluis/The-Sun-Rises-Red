@@ -60,7 +60,7 @@ class Enemys {
     spritesImages.orc.run.sX = spritesImages.orc.run.sW * position;
   
     this.img.src = spritesImages.orc.run.img;
-    this.agility = 2.2;
+    this.agility = 2;
 
     drawSprite(
       this.img,

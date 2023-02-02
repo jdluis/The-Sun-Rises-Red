@@ -48,9 +48,10 @@ let heroeIsFemale = false;
 //Game Options
 let arrowsSpeed = 5;
 let arrowsDamage = 1;
+let nextLevelProduct = 10;
+let modifySpawnQuantity = 2;
 
 //Images | Sprites
-
 const spritesImages = {
   maleHero: {
     simple: "./assets/img/heroe/simple.png",
@@ -71,38 +72,31 @@ const spritesImages = {
     simple: "./assets/img/heroe-female/simple.png",
     iddle: {
       img: "./assets/img/heroe-female/iddleSprite.png",
-      sW: 746, //width de sprite / image cols
-      sH: 943, //height de sprite / image rows
-      sX: 0, //en la imagen
-      sY: 0, //en la imagen
+      sW: 746,
+      sH: 943,
+      sX: 0,
+      sY: 0,
       sttaggedFrames: 10,
     },
-    /* walking: ,
-    atacking: ,
-    dieying: , */
   },
   orc: {
     simple: "./assets/img/Orc/simple.png",
     walking: {
       img: "./assets/img/Orc/spriteWalk.png",
-      sW: 685, //width de sprite / image cols
-      sH: 632, //height de sprite / image rows
-      sX: 0, //en la imagen
-      sY: 0, //en la imagens
+      sW: 685,
+      sH: 632,
+      sX: 0,
+      sY: 0,
       sttaggedFrames: 10,
     },
     run: {
       img: "./assets/img/Orc/spriteRun.png",
-      sW: 685, //width de sprite / image cols
-      sH: 608, //height de sprite / image rows
-      sX: 0, //en la imagen
-      sY: 0, //en la imagens
+      sW: 685,
+      sH: 608,
+      sX: 0,
+      sY: 0,
       sttaggedFrames: 9,
     },
-    /*
-    iddle: ,
-    atacking: ,
-    dieying: , */
   },
 };
 
@@ -220,10 +214,10 @@ addLife.addEventListener("click", () => {
   upgradesView.style.display = "none";
 });
 
-addAllied.addEventListener("click", () => {
+/* addAllied.addEventListener("click", () => {
   game.gamePause();
   upgradesView.style.display = "none";
-});
+}); */
 
 // Pause Icon toggle & Pause init
 pauseBtn.addEventListener("click", () => {
