@@ -23,7 +23,7 @@ class Collisions {
     });
   };
 
-  collisionOutOfMap = (gameOver) => {
+  collisionOutOfMapLeft = (gameOver) => {
     this.horde.forEach((orc) => {
       if (orc.x <= 0) {
         this.heroe.lostLife();
@@ -31,6 +31,14 @@ class Collisions {
           gameOver();
         }
       } else {
+      }
+    });
+  };
+
+  collisionOutMapRight = () => {
+    this.arrows.forEach((arrow, index) => {
+      if (arrow.x > canvas.width) {
+        arrow.cleanArrow(index);
       }
     });
   };
@@ -48,8 +56,6 @@ class Collisions {
           arrow.x = orc.x - 30; //adjust the arrow to body
           orc.impactedArrows.push(arrow);
           arrow.cleanArrow(indexArrow);
-        } else if (arrow.x > canvas.width) {
-            arrow.cleanArrow(indexArrow);
         }
       });
     });

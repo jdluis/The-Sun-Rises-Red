@@ -142,8 +142,9 @@ class Game {
 
     //collisions
     this.collisionLogic.collisionHeroe(this.gameOver);
-    this.collisionLogic.collisionOutOfMap(this.gameOver);
+    this.collisionLogic.collisionOutOfMapLeft(this.gameOver);
     this.collisionLogic.collisionArrow();
+    this.collisionLogic.collisionOutMapRight();
 
     this.updateScore();
     this.updateHighScore();
