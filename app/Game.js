@@ -54,7 +54,7 @@ class Game {
     //render
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
       for (let i = 0; i < this.horde.length; i++) {
-        this.horde[i].draw();
+        this.horde[i].animate(this.frames);
       }
     }
   };

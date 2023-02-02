@@ -8,7 +8,7 @@ class Enemys {
 
     //Img
     this.img = new Image();
-    this.img.src = "./assets/img/Orc/orc.png";
+    this.img.src = chooseImages.orc.simple;
 
     //Skills
     this.strength = 1;
@@ -23,8 +23,25 @@ class Enemys {
   }
 
   //Render
-  draw = () => {
-    ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+
+  animate = (gameFrame) => {
+    let position = Math.floor(gameFrame / orcSprites.sttaggedFrames) % 4;
+    orcSprites.sX = orcSprites.sW * position;
+  
+    this.img.src = chooseImages.orc.walking;
+    
+    drawSprite(
+      this.img,
+      orcSprites.sX,
+      orcSprites.sH * orcSprites.sY,
+      orcSprites.sW,
+      orcSprites.sH,
+      this.x,
+      this.y,
+      this.w,
+      this.h
+    );
+
     this.impactedArrows.forEach(arrow => {
       arrow.drawArrowsInOrc(this.x)
     })

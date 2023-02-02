@@ -38,6 +38,16 @@ const topLimit = 130;
 const bottomLimit = 360;
 
 //Images | Sprites
+
+const orcSprites = {
+  sprite: "./assets/img/Orc/orc.png",
+  sW: 685, //width de sprite / columnas de dibujos
+  sH: 632, //height de sprite / rows
+  sX: 0, //en la imagen
+  sY: 0, //en la imagens
+  sttaggedFrames: 10,
+};
+
 const heroeSprites = {
   sprite: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
   sW: 429, //width de sprite / columnas de dibujos
@@ -47,15 +57,30 @@ const heroeSprites = {
   sttaggedFrames: 10,
 };
 
-const chooseHero = {
+const chooseImages = {
   male: {
-    /* simple: , */
+    simple: "./assets/img/heroe/Elf.png",
     iddle: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
+    /*
+    walking: ,
+     atacking: ,
+    dieying: , */
   },
   female: {
     simple: "./assets/img/heroe-female/elf.png",
-    /* iddle: , */
+    /* iddle: ,
+    walking: ,
+    atacking: ,
+    dieying: , */
   },
+  orc: {
+    simple: "./assets/img/Orc/orc.png",
+    walking: "./assets/img/Orc/spriteWalk.png",
+    /*
+    iddle: ,
+     atacking: ,
+    dieying: , */
+  }
 };
 
 /* | | | |  -->> ªªª Main Functions ªªª <<-- | | | | */
@@ -104,7 +129,7 @@ restartGameBtn.addEventListener("click", restartGame);
 //Choose Hero****
 
 maleHeroBtn.addEventListener("click", () => {
-  heroeSprites.sprite = chooseHero.male.iddle;
+  heroeSprites.sprite = chooseImages.male.iddle;
   imgMaleDOM.style.opacity = "1";
   maleHeroBtn.classList.add("activeHero");
 
@@ -113,7 +138,7 @@ maleHeroBtn.addEventListener("click", () => {
 });
 
 femaleHeroBtn.addEventListener("click", () => {
-  heroeSprites.sprite = chooseHero.female.simple;
+  heroeSprites.sprite = chooseImages.female.simple;
   imgFemaleDOM.style.opacity = "1";
   femaleHeroBtn.classList.add("activeHero");
 
