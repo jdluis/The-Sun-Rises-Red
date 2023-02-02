@@ -36,51 +36,73 @@ const floorY = 200;
 let alreadyShoot = false;
 const topLimit = 130;
 const bottomLimit = 360;
+const levels = [0,1,2,3,4,5,6,7,8,9,10];
+let heroeIsFemale = false;
 
 //Images | Sprites
 
-const orcSprites = {
-  sprite: "./assets/img/Orc/orc.png",
-  sW: 685, //width de sprite / columnas de dibujos
-  sH: 632, //height de sprite / rows
-  sX: 0, //en la imagen
-  sY: 0, //en la imagens
-  sttaggedFrames: 10,
-};
-
-const heroeSprites = {
-  sprite: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
-  sW: 429, //width de sprite / columnas de dibujos
-  sH: 500, //height de sprite / rows
-  sX: 1, //en la imagen
-  sY: 1, //en la imagen
-  sttaggedFrames: 10,
-};
-
-const chooseImages = {
-  male: {
-    simple: "./assets/img/heroe/Elf.png",
-    iddle: "./assets/img/heroe/iddle1/Elf_idle_sprites.png",
+const spritesImages = {
+  maleHero: {
+    simple: "./assets/img/heroe/simple.png",
+    iddle: {
+      img: "./assets/img/heroe/iddleSprite.png",
+      sW: 473, //width de sprite / image cols
+      sH: 537, //height de sprite / image rows
+      sX: 0, //en la imagen
+      sY: 0, //en la imagen
+      sttaggedFrames: 10,
+    },
     /*
-    walking: ,
-     atacking: ,
-    dieying: , */
-  },
-  female: {
-    simple: "./assets/img/heroe-female/elf.png",
-    /* iddle: ,
     walking: ,
     atacking: ,
     dieying: , */
   },
+  femaleHero: {
+    simple: "./assets/img/heroe-female/simple.png",
+    iddle: {
+      img: "./assets/img/heroe-female/iddleSprite.png",
+      sW: 746, //width de sprite / image cols
+      sH: 943, //height de sprite / image rows
+      sX: 0, //en la imagen
+      sY: 0, //en la imagen
+      sttaggedFrames: 10,
+    },
+    /* walking: ,
+    atacking: ,
+    dieying: , */
+  },
   orc: {
-    simple: "./assets/img/Orc/orc.png",
-    walking: "./assets/img/Orc/spriteWalk.png",
+    simple: "./assets/img/Orc/simple.png",
+    walking: {
+      img: "./assets/img/Orc/spriteWalk.png",
+      sW: 685, //width de sprite / image cols
+      sH: 632, //height de sprite / image rows
+      sX: 0, //en la imagen
+      sY: 0, //en la imagens
+      sttaggedFrames: 10,
+    },
+    run: {
+      img: "./assets/img/Orc/spriteRun.png",
+      sW: 685, //width de sprite / image cols
+      sH: 608, //height de sprite / image rows
+      sX: 0, //en la imagen
+      sY: 0, //en la imagens
+      sttaggedFrames: 9,
+    }
     /*
     iddle: ,
-     atacking: ,
+    atacking: ,
     dieying: , */
-  }
+  },
+};
+
+const heroSelected = {
+  img: spritesImages.maleHero.iddle.img,
+  sW: null,
+  sH: null,
+  sX: null,
+  sY: null,
+  sttaggedFrames: null,
 };
 
 /* | | | |  -->> ªªª Main Functions ªªª <<-- | | | | */
@@ -94,7 +116,7 @@ const startGame = () => {
   if (gameView.style.display === "flex") {
     setTimeout(() => {
       instructionInGameDOM.style.display = "none";
-    }, 6000)
+    }, 6000);
   }
 
   //Create Game
@@ -115,8 +137,8 @@ const randomNumber = (posibility) => {
   return Math.random() * -posibility;
 };
 
-highScoreSpan.innerText = window.localStorage.getItem('highScore');
-finalHighScoreSpan.innerText = window.localStorage.getItem('highScore');
+highScoreSpan.innerText = window.localStorage.getItem("highScore");
+finalHighScoreSpan.innerText = window.localStorage.getItem("highScore");
 /* | | | |  -->> ªªª Event Listeners ªªª <<-- | | | | */
 
 //Game settings
@@ -129,7 +151,8 @@ restartGameBtn.addEventListener("click", restartGame);
 //Choose Hero****
 
 maleHeroBtn.addEventListener("click", () => {
-  heroeSprites.sprite = chooseImages.male.iddle;
+  heroeIsFemale = false;
+  heroSelected.img = spritesImages.maleHero.iddle.img;
   imgMaleDOM.style.opacity = "1";
   maleHeroBtn.classList.add("activeHero");
 
@@ -138,7 +161,8 @@ maleHeroBtn.addEventListener("click", () => {
 });
 
 femaleHeroBtn.addEventListener("click", () => {
-  heroeSprites.sprite = chooseImages.female.simple;
+  heroeIsFemale = true;
+  heroSelected.img = spritesImages.femaleHero.iddle.img;
   imgFemaleDOM.style.opacity = "1";
   femaleHeroBtn.classList.add("activeHero");
 

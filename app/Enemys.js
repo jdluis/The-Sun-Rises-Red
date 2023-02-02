@@ -8,7 +8,7 @@ class Enemys {
 
     //Img
     this.img = new Image();
-    this.img.src = chooseImages.orc.simple;
+    this.img.src = spritesImages.orc.walking.img;
 
     //Skills
     this.strength = 1;
@@ -24,28 +24,57 @@ class Enemys {
 
   //Render
 
-  animate = (gameFrame) => {
-    let position = Math.floor(gameFrame / orcSprites.sttaggedFrames) % 4;
-    orcSprites.sX = orcSprites.sW * position;
-  
-    this.img.src = chooseImages.orc.walking;
-    
-    drawSprite(
-      this.img,
-      orcSprites.sX,
-      orcSprites.sH * orcSprites.sY,
-      orcSprites.sW,
-      orcSprites.sH,
-      this.x,
-      this.y,
-      this.w,
-      this.h
-    );
+  animate = (gameFrame, killedCount) => {
+
+    if (killedCount < 10) {
+      this.walkingAnimation(gameFrame);
+    } else if (killedCount > 10) {
+      this.runAnimation(gameFrame);
+    }
 
     this.impactedArrows.forEach(arrow => {
       arrow.drawArrowsInOrc(this.x)
     })
   };
+
+  walkingAnimation = (gameFrame) => {
+    let position = Math.floor(gameFrame / spritesImages.orc.walking.sttaggedFrames) % 4;
+    spritesImages.orc.walking.sX = spritesImages.orc.walking.sW * position;
+  
+    this.img.src = spritesImages.orc.walking.img;
+    this.agility = 1;
+    drawSprite(
+      this.img,
+      spritesImages.orc.walking.sX,
+      spritesImages.orc.walking.sH * spritesImages.orc.walking.sY,
+      spritesImages.orc.walking.sW,
+      spritesImages.orc.walking.sH,
+      this.x,
+      this.y,
+      this.w,
+      this.h
+    );
+  }
+
+  runAnimation = (gameFrame) => {
+    let position = Math.floor(gameFrame / spritesImages.orc.run.sttaggedFrames) % 3;
+    spritesImages.orc.run.sX = spritesImages.orc.run.sW * position;
+  
+    this.img.src = spritesImages.orc.run.img;
+    this.agility = 1.5;
+
+    drawSprite(
+      this.img,
+      spritesImages.orc.run.sX,
+      spritesImages.orc.run.sH * spritesImages.orc.run.sY,
+      spritesImages.orc.run.sW,
+      spritesImages.orc.run.sH,
+      this.x,
+      this.y,
+      this.w,
+      this.h
+    );
+  }
 
   //Actions
   attackWarrior = (enemy, frames) => {

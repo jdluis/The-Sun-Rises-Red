@@ -8,7 +8,7 @@ class Heroe {
 
     //Img
     this.img = new Image();
-    this.img.src = heroeSprites.sprite; //w: 1744 px | h: 1000 px
+    this.img.src = heroSelected.img;
 
     //Skills
     this.lifes = 3;
@@ -20,20 +20,38 @@ class Heroe {
 
   //render
   animate = (gameFrame) => {
-    let position = Math.floor(gameFrame / heroeSprites.sttaggedFrames) % 4;
-    heroeSprites.sX = heroeSprites.sW * position;
 
-    drawSprite(
-      this.img,
-      heroeSprites.sX,
-      heroeSprites.sH * heroeSprites.sY,
-      heroeSprites.sW,
-      heroeSprites.sH,
-      this.x,
-      this.y,
-      this.w,
-      this.h
-    );
+    if (heroeIsFemale === false) {
+      let position = Math.floor(gameFrame / spritesImages.maleHero.iddle.sttaggedFrames) % 4;
+      spritesImages.maleHero.iddle.sX = spritesImages.maleHero.iddle.sW * position;
+  
+      drawSprite(
+        this.img,
+        spritesImages.maleHero.iddle.sX,
+        spritesImages.maleHero.iddle.sH * spritesImages.maleHero.iddle.sY,
+        spritesImages.maleHero.iddle.sW,
+        spritesImages.maleHero.iddle.sH,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+      );
+    } else {
+      let position = Math.floor(gameFrame / spritesImages.femaleHero.iddle.sttaggedFrames) % 4;
+      spritesImages.femaleHero.iddle.sX = spritesImages.femaleHero.iddle.sW * position;
+  
+      drawSprite(
+        this.img,
+        spritesImages.femaleHero.iddle.sX,
+        spritesImages.femaleHero.iddle.sH * spritesImages.femaleHero.iddle.sY,
+        spritesImages.femaleHero.iddle.sW,
+        spritesImages.femaleHero.iddle.sH,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+      );
+    }
   };
 
   animateAtack = () => {};

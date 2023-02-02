@@ -54,7 +54,7 @@ class Game {
     //render
     if (this.horde.length <= this.spawn && this.roundStatus === true) {
       for (let i = 0; i < this.horde.length; i++) {
-        this.horde[i].animate(this.frames);
+        this.horde[i].animate(this.frames, this.killed);
       }
     }
   };
@@ -106,7 +106,6 @@ class Game {
   };
 
   updateHighScore = () => {
-    //PENDIENTE
     let highScore = localStorage.getItem('highScore');
 
     if (highScore > this.killed) {
@@ -116,7 +115,6 @@ class Game {
     }
 
     finalHighScoreSpan.innerText = window.localStorage.getItem('highScore');
-
   };
 
   updateLifesLefts = () => {
@@ -127,6 +125,20 @@ class Game {
         ? `<i class="fa-solid fa-heart"><i class="fa-solid fa-heart"></i>`
         : `<i class="fa-solid fa-heart"></i>`;
   };
+
+
+  //Levels Up
+
+  levelUp = () => {
+    //vaciar arrays de horda
+    //puedo crear for y recorrer cada levelup por diez, de esa forma cada 10 muertos sube un nivel
+    if (this.killer > levels[0] * 10) {
+      this.horde.length = 0;
+    }
+    //pausar juego hasta que elija mejora
+    //cambiar enemigos a rapido
+    //spawn de 10 mas
+  }
 
   //Main Method
   gameLoop = () => {
@@ -139,6 +151,8 @@ class Game {
     this.horde.forEach((enemy) => {
       enemy.moveToAtack();
     });
+
+    this.levelUp();
 
     //collisions
     this.collisionLogic.collisionHeroe(this.gameOver);
