@@ -14,7 +14,8 @@ The game consists of eliminating waves of orcs with the shots from your bow. You
 
 # Backlog Functionalities
 
-- List here the cool (but not essential) functionalities your game could have
+- More animation like: dead, hurt, move up, move down.
+- Shoot Control by mouse with power of throwing, 
 
 # Proyect Structure
 
