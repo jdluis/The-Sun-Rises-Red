@@ -81,7 +81,7 @@ The game consists of eliminating waves of orcs with the shots from your bow. You
 - Pause Screen
 - Game Screen
 
-# Extra Links (The links can be added later when available)
+# Extra Links
 
 ### Trello
 [Link](https://trello.com/b/oIPoMt53/the-sun-rises-red-legolas)
